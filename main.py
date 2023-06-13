@@ -1,6 +1,11 @@
+"""
+
+    Example for using IFTTT Webhook service
+"""
 from IFTTT import *
 
 if __name__ == "__main__":
-    event = "FALL%20DETECTION"
-    ifttt = IFTTT() # Pass your private key
-    ifttt.IFTTT_trigger(event) # Pass Event
+    event = "SYS_RESET"
+    data_ifttt = {'value1': 'enter_value'}
+    ifttt = IFTTT("yourPrivateKey")    				# Pass your private key
+    ifttt.IFTTT_webhook_send(event,data_ifttt)                  # Pass Event
