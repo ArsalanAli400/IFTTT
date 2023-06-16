@@ -5,7 +5,7 @@
 from IFTTT import *
 
 if __name__ == "__main__":
-    event = "SYS_RESET"
+    event = "event_name"
     data_ifttt = {'value1': 'enter_value'}
     ifttt = IFTTT("yourPrivateKey")    				# Pass your private key
     ifttt.IFTTT_webhook_send(event,data_ifttt)                  # Pass Event
