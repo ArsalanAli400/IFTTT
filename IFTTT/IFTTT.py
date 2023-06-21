@@ -1,15 +1,17 @@
 """
-
+    Author: Arsalan Ali
     IFTTT: A free messaging service
     This API is related to IFTTT service
     and provides the suppport for trigger
     event message services
+    Version: 0.2-dev
 """
 # Modules
 import http.client
 import json
 import time
 from datetime import datetime
+import threading
 
 """
 
@@ -21,7 +23,7 @@ from datetime import datetime
 """
 
 
-class IFTTT():
+class IFTTT:
     def __init__(self, privatekey="5ksBJ10GNHBtkzj294br"):
         # Host Server credentials
         self.host = "maker.ifttt.com"
@@ -136,3 +138,36 @@ class IFTTT():
         print(response.read().decode())
         time.sleep(1)
         connection.close()
+
+
+"""
+    
+    ifttt_schedular: Email service with time schedule
+"""
+class ifttt_schedular(IFTTT):
+    def __init__(self, time_sch, PrivateKey, event, value_dict):
+        super().__init__(privatekey="5ksBJ10GNHBtkzj294br")
+        self.__time_schedule__ = time_sch
+        self.__event__ = event
+        self.__value_dict__ = value_dict
+        self.ifttt_obj = IFTTT(PrivateKey)
+        self.thread = threading.Thread(target=self.ifttt_Tschedular, args=())
+
+    """
+    
+        ifttt_Tschedular: ifttt time schedular
+    """
+    def ifttt_Tschedular(self):
+        print("Emailing Thread Started")
+        while True:
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            if current_time in self.__time_schedule__:
+                self.ifttt_obj.IFTTT_webhook_send(self.__event__, self.__value_dict__)
+            time.sleep(1)
+
+    def start(self):
+        self.thread.start()
+
+    def join(self):
+        self.thread.join()
