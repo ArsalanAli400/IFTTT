@@ -79,7 +79,7 @@ Event triggered emailing service provided by IFTTT can be deployed on any system
 
 This section should list any major frameworks/libraries involved in the project.
 
-* [![https][https]][Https-url]
+<!-- * [![https][https]][Https-url] -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -101,29 +101,32 @@ This section provides the instruction how to setup the API on the system. This g
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a Private key for webhooks
+1. Get a Private key for webhooks, Follow URL as listed below,
+* [Email WebHooks Register](https://ifttt.com/maker_webhooks)
+* Get a Private Key for APPLET WebHooks, Get Guide Using following link
+[!youtube](https://www.youtube.com/watch?v=QSRPj-0saWA)
+
+[![Watch the video](https://arduinodiy.files.wordpress.com/2018/01/webhookslogo.png)](https://www.youtube.com/watch?v=QSRPj-0saWA)
+
+
 2. Clone the repo
-   ```sh
+   ```bash
    git clone https://github.com/ArsalanAli400/IFTTT.git
    ```
-<!-- 3. Install NPM packages
-   ```sh
-   
-   ``` -->
-<!-- 4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ``` -->
+3. Install required packages
+   ```bash
+   python3 -m pip install -r requirements.txt
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 Change privatekey and event in the given main.py.
-
+```bash
+python3 main.py
+```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
